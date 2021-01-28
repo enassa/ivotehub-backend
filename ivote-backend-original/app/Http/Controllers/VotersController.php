@@ -37,7 +37,6 @@ class VotersController extends Controller
               return response()->json([
                 "message" => "Voter has already voted"
               ], 404);
-              
             }
             else{
               return response($voter, 200);
@@ -67,5 +66,25 @@ class VotersController extends Controller
   
       public function deleteVoter ($id) {
         // logic to delete a Voter record goes here
+      }
+      public function Voted ($id) {
+        // logic to delete a Voter record goes here
+        // if (Voter::where('index_number', $id)->exists()) {
+          $voter = Voter::where("index_number", '=',  $id)->update(['vote_status'=> 'yes']);
+          if($voter){
+            return response()->json([
+              "message" => "sucesss"
+            ], 200);
+          }
+          else{
+            return response()->json([
+              "message" => "Failed to update yes"
+            ], 404);
+          }
+            
+          
+        // } else {
+        
+        // }
       }
 }

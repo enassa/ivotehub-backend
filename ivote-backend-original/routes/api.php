@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('voters', 'VotersController@getAllVoters');
 Route::get('voters/{id}', 'VotersController@getVoters');
+Route::post('voters-v/{id}', 'VotersController@Voted');
 Route::put('voters/{id}', 'VotersController@updateVoter');
 Route::post('voters', 'VotersController@createVoter');
 Route::delete('voters/{id}','VotersControllerr@deleteVoter');
