@@ -36,7 +36,7 @@ class ContestantsController extends Controller
       public function getContestant($id) {
         // logic to get a contestant record goes here
         // if (Contestant::where('id', $id)->exists()) {
-          $contestant = contestant::where('group', $id)->get()->toJson(JSON_PRETTY_PRINT);
+          $contestant = contestant::where('group', $id)->get()->orderBy('id','DESC')->toJson(JSON_PRETTY_PRINT);
           if($contestant){
             return response($contestant, 200);
           } else {
