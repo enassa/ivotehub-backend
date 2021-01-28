@@ -36,7 +36,7 @@ class VotersController extends Controller
             if($voter->vote_status == "yes"){
               return response()->json([
                 "message" => "Voter has already voted"
-              ], 404);
+              ], 300);
             }
             else{
               return response($voter, 200);
