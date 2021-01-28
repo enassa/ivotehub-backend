@@ -32,11 +32,11 @@ class VotersController extends Controller
       public function getVoters($id) {
         // Check if voter's id exist, called by verification page,
         if (Voter::where('index_number', $id)->exists()) {
-            $voter = Voter::where('index_number', $id)->first();
+            $voter = Voter::where('index_number', $id)->first()->orderBy('id','DESC');
             if($voter->vote_status == "yes"){
               return response()->json([
                 "message" => "Voter has already voted"
-              ], 300);
+              ], 201);
             }
             else{
               return response($voter, 200);
